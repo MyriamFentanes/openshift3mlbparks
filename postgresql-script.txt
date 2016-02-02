@@ -1,0 +1,12 @@
+CREATE TABLE mblparks(
+   id SERIAL PRIMARY KEY,
+   name VARCHAR(20),
+   position VARCHAR(100),
+   ballpark VARCHAR(20),
+   league VARCHAR(20),
+   payroll BIGINT
+
+
+);
+
+INSERT INTO mblparks (name,position,ballpark,league,payroll) VALUES ('Diamondbacks','position:-112.066662:33.444799 ','Chase Field','National League',89000000);

@@ -28,10 +28,11 @@ public class DBPostgreSQLConnection {
 		String postgresqlPassword = System.getenv("POSTGRESQL_PASSWORD");
 		String postgresqlDBName = System.getenv("POSTGRESQL_DATABASE");
 		try {
+			System.out.println("Attempting to connect to PostgreSQL");
 			Class.forName("org.postgresql.Driver");
 			String url = "jdbc:postgresql://" + postgresqlHost + "/" + postgresqlDBName;
 			conn = DriverManager.getConnection(url, postgresqlUser, postgresqlPassword);
-			System.out.println("Connected to database");
+			System.out.println("Connected to postgresql database");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 			System.out.println("Couldn't load the driver class: " + e.getMessage() + " :: " + e.getClass());
