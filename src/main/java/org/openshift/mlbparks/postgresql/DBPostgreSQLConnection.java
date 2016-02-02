@@ -23,14 +23,13 @@ public class DBPostgreSQLConnection {
 
 	@PostConstruct
 	public void afterCreate() {
-		String postgresqlHost = System.getenv("POSTGRESQL_SERVICE_HOST");
-		String postgresqlPort = System.getenv("POSTGRESQL_SERVICE_PORT");
+		String postgresqlHost = (System.getenv("POSTGRESQL_SERVICE_HOST") == null) ? "127.0.0.1" : System.getenv("POSTGRESQL_SERVICE_HOST");;
 		String postgresqlUser = System.getenv("POSTGRESQL_USER");
 		String postgresqlPassword = System.getenv("POSTGRESQL_PASSWORD");
 		String postgresqlDBName = System.getenv("POSTGRESQL_DATABASE");
 		try {
 			Class.forName("org.postgresql.Driver");
-			String url = "jdbc:postgresql://" + postgresqlHost + ":" + postgresqlPort + "/" + postgresqlDBName;
+			String url = "jdbc:postgresql://" + postgresqlHost + "/" + postgresqlDBName;
 			conn = DriverManager.getConnection(url, postgresqlUser, postgresqlPassword);
 			System.out.println("Connected to database");
 		} catch (ClassNotFoundException e) {
